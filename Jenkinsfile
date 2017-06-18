@@ -187,13 +187,5 @@ pipeline  {
  }
  
 
- 
- 
- content-jenkins-java-project forked from linuxacademy/content-jenkins-java-project
 
-            echo "***Tagging the Release***"
-            }
-         }
-    }
- }
  
