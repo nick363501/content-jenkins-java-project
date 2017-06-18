@@ -93,5 +93,24 @@ pipeline  {
 			sh "git push origin rectangle-${env.MAJOR_VERSION}.${BUILD_NUMBER}"
             }
          }
+	post {
+	     failure {
+		   emailext (
+		     subject:  "${env.JOB_NAME} FAILED
+			 body:  "FAILED"
+			 to:  "bob.nicolais@druidroad.com"
+			)
+		}
+		}
+	post {
+	     success {
+		   emailext (
+		     subject:  "${env.JOB_NAME} BUILT
+			 body:  "BUILT"
+			 to:  "bob.nicolais@druidroad.com"
+			)
+		}
+	}
     }
+    
  }
