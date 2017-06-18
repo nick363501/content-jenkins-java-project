@@ -58,7 +58,8 @@ pipeline  {
     }
     stage ("Test on Linux") {
       agent {
-        label 'master
+        label 'master'
+      }
       steps {
         sh "java -jar ${DEPLOY_DIR}/rectangle_${env.MAJOR_VERSION}.${BUILD_NUMBER}.jar 3 4"
       }
@@ -88,11 +89,8 @@ pipeline  {
             echo "***Pushing to Origin Master***"
             sh 'git push origin master --force'
             echo "***Tagging the Release***"
-			sh "git tag rectangle-${env.MAJOR_VERSION}.${BUILD_NUMBER}"
-			sh "git push origin rectangle-${env.MAJOR_VERSION}.${BUILD_NUMBER}"
-			echo "*********  End of Promotion *********"
             }
          }
     }
-	}
  }
+ 
