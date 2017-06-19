@@ -92,15 +92,6 @@ pipeline  {
             }
          }
 	}
-	post {
-    success {
-	   emailext (
-	      subject:  "Sucess"
-		  body:  "Job Completed"
-		  to:  "bob.nicolais@druidroad.com
-		)
-	}
-    }
 }
  
  
