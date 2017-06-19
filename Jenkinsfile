@@ -3,14 +3,12 @@ pipeline  {
   environment {
       DEPLOY_DIR = "/var/lib/jenkins/buildfiles"
       MAJOR_VERSION =1
-  }
+    }
   tools {
     ant "ant-1.10.1"
     jdk "sun-jdk-8u31"
-  }
-
+    }
   stages {
-
     stage( 'checkout' ) {
         agent {
           label 'master'
@@ -94,7 +92,16 @@ pipeline  {
             }
          }
 	}
-  }
+	post {
+    success {
+	   emailext (
+	      subject:  "Sucess"
+		  body:  "Job Completed"
+		  to:  "bob.nicolais@druidroad.com
+		)
+	}
+    }
+}
  
  
  
