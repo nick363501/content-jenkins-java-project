@@ -82,13 +82,13 @@ pipeline  {
             sh 'git checkout development'
             echo "***Checking out Master***"
             sh 'git checkout master'
-			echo "***Merging Development into Master***"
+            echo "***Merging Development into Master***"
             sh 'git merge development'
             echo "***Pushing to Origin Master***"
             sh 'git push origin master --force'
             echo "***Tagging the Release***"
-			sh "git tag rectangle-${env.MAJOR_VERSION}.${BUILD_NUMBER}"
-			sh "git push origin rectangle-${env.MAJOR_VERSION}.${BUILD_NUMBER}"
+            sh "git tag rectangle-${env.MAJOR_VERSION}.${BUILD_NUMBER}"
+            sh "git push origin rectangle-${env.MAJOR_VERSION}.${BUILD_NUMBER}"
             }
          }
 	}
