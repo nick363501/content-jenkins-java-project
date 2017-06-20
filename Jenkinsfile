@@ -87,17 +87,9 @@ pipeline  {
             echo "***Pushing to Origin Master***"
             sh 'git push origin master --force'
             echo "***Tagging the Release***"
+			sh "git tag rectangle-${env.MAJOR_VERSION}.${BUILD_NUMBER}"
+            sh "git push origin rectangle-${env.MAJOR_VERSION}.${BUILD_NUMBER}"
             }
          }
-	stage ('Tag Release') {
-	  agent {
-	    label 'master'
-		steps {
-		    sh "git tag rectangle-${env.MAJOR_VERSION}.${BUILD_NUMBER}"
-            sh "git push origin rectangle-${env.MAJOR_VERSION}.${BUILD_NUMBER}"
-			}
-		}
-	}
-		
 	}
 }
