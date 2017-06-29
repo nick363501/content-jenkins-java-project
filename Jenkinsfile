@@ -7,6 +7,7 @@ pipeline  {
   tools {
     ant "ant-1.10.1"
     jdk "sun-jdk-8u31"
+	maven "maven3"
     }
   stages {
     stage( 'checkout' ) {
