@@ -1,7 +1,7 @@
 pipeline  {
   agent { label 'master' }
   environment {
-      DEPLOY_DIR = "/var/lib/jenkins/buildfiles"
+      DEPLOY_DIR = "/tmp/awstest"
       MAJOR_VERSION =1
     }
   tools {
