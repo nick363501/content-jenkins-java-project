@@ -73,25 +73,5 @@ pipeline  {
         sh "cp -rf ${DEPLOY_DIR}/rectangle_${env.MAJOR_VERSION}.${BUILD_NUMBER}.jar ${DEPLOY_DIR}/green/rectangle_${env.MAJOR_VERSION}.${BUILD_NUMBER}.jar"
       }
     }
-    stage ('Promote Development to Master') {
-      agent {
-        label 'master'
-        }
-        steps {
-            echo "Stashing any Local Changes"
-            sh 'git stash'
-            echo "***Check out Development Branch***"
-            sh 'git checkout development'
-            echo "***Checking out Master***"
-            sh 'git checkout master'
-			echo "***Merging Development into Master***"
-            sh 'git merge development'
-            echo "***Pushing to Origin Master***"
-            sh 'git push origin master --force'
-            echo "***Tagging the Release***"
-            sh 'git tag rectangle-${env.MAJOR_VERSION}.${BUILD_NUMBER}'
-            sh 'git push origin rectangle-${env.MAJOR_VERSION}.${BUILD_NUMBER}'
-            }
-         }
     }
- }
+}
